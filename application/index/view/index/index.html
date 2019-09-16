@@ -1,0 +1,230 @@
+
+<!DOCTYPE html><html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>我要升级 编号2061</title>
+    <!-- Bootstrap -->
+    <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection">
+    <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/alert.js"></script>
+    <script type="text/javascript">
+        var setleve = "./index.php?i=1&c=entry&op=uplevel&do=index&m=jiexi_aaa";
+        var apply_uid = "2061";
+        var record_id = "";
+
+
+        $(function(){
+            $("#click-pay").click(function(){
+
+                if(!confirm('是否提交升级申请? \n点确定后按提示加Ta为好友,让他帮您升级! \n祝您玩的开心^_^')){
+                    return;
+                }
+
+                $.post('./index.php?i=1&c=entry&op=uplevel&do=index&m=jiexi_aaa', {'xxx' : 88},function(data){
+                    var info = eval(data);
+
+                    if(info.s == 'ok'){
+                        //alert(info.msg);
+                        window.location.reload(1);
+                        //window.location.href=window.location.href + '&rand=' + Math.floor(num);
+                    }else{
+                        //alert(info.msg);
+                        window.location.reload(1);
+                        //window.location.href=window.location.href + '&rand=' + Math.floor(num);
+
+                    }
+                },'json');
+            });
+
+
+            $("#refresh_click").click(function(){
+                if(!confirm('刷新超时未处理的升级请求?')){
+                    return;
+                }
+                $.post('./index.php?i=1&c=entry&op=refresh&do=index&m=jiexi_aaa', {'xxx' : 88},function(data){
+                    var info = eval(data);
+                    alert(data);
+                    if(info.s == 'ok'){
+
+
+                        alert(info.msg);
+                        //window.location.reload();
+                    }else{
+                        alert(info.msg);
+                        //window.location.reload();
+                    }
+                },'json');
+            });
+
+            $("#up_click").click(function(){
+                /*			if(!confirm('确认完成升级?')){
+                                return;
+                            }
+                */
+                $.post('./index.php?i=1&c=entry&op=upseturlok&do=index&m=jiexi_aaa', {'apply_uid' : apply_uid,'record_id': record_id},function(data){
+                    var info = eval(data);
+
+                    if(info.s == 'ok'){
+
+
+                        alert(info.msg);
+                        window.location.reload(1);
+                    }else{
+                        alert(info.msg);
+                        window.location.reload(1);
+                    }
+                },'json');
+            });
+
+        })
+    </script>
+</head>
+<body style="background: #dfdfdf	url(/static/index/images/pag.jpg)  repeat center;">
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #9c9ce0;">
+        <div class="row">
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="./index.php?i=1&c=entry&do=index&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common">
+                            <img class="banner-img" src="/static/index/images/home.png"></div>升级
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="./index.php?i=1&c=entry&do=waitup&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/pz.png"></div>批准
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="./index.php?i=1&c=entry&op=qr&do=index&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/list.png"></div>推广
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="./index.php?i=1&c=entry&do=youxi&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/wf.png"></div>规则
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="./index.php?i=1&c=entry&do=myinfo&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/my.png"></div>我
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </nav>
+    <div class="row clearfix">
+    <style type="text/css">
+        .weui_btn_default a{color:red; text-decoration : underline}
+        .left{text-align:right;padding-right:2px;width:41%;font-size:13px !important;}
+        .right{text-align:left;width:59%;font-size:13px !important;}
+        .tdall .weui_btn_default{font-size:12px !important;padding:5px 0 !important;background:none;text-align:center}
+        .table_contact{width:98%;margin:10px auto; }
+        .table_contact td{ line-height:28px}
+        .redpacket{font-size:16px;font-weight:700;color:#f60}
+        @media screen and (max-width:800px)
+        {
+            .img-circle{margin-left:18px !important;}
+        }
+
+        @media screen and (min-width:800px)
+        {
+            .bigmedia{margin-left:-3px}
+            img{max-width:360px;}
+        }
+    </style>
+
+
+
+    <div class="col-xs-12">
+        <div class="thumbnail hdiv-common" style="margin-right:0px;margin-left:0px;text-align:center;background: repeat;background-size: 200%, 100%;">
+
+            <div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
+                <span style=" font-weight:bold; "><a href="#">↓加我微信 发红包升级!</a> </span>
+            </div>
+            <!-- 					<div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
+                <span style=" font-weight:bold; "><a href="#">↓加我微信 发红包升级!</a> </span>
+            </div>			 -->
+            <div style="margin-top:30px;">
+                <center> <img class="img-circle" src="/static/index/images/201906062228093989.jpg" alt="头像"   style="width:118px;height:118px">  <br/> 	</center>
+
+                <img src="/static/index/images/201906062228091280.jpg" alt="二维码" class=" " style="width:158px;min-height:158px;">
+
+            </div>
+            <table class="table_contact" border="0" cellspacing="0" cellpadding="0">
+
+                <tr>
+                    <td class="left"> <img style="vertical-align:middle" src="/static/index/images/weixinpacket.png" width="24" height="24" alt=""   /></td>
+                    <td  class="right"><span class="redpacket">￥30</span></td>
+                </tr>
+
+                <tr>
+                    <td class="left"> <img style="vertical-align:middle" src="/static/index/images/weixin.png" width="24" height="24" alt=""   /></td>
+                    <td class="right"><span>LX491494265</span></td>
+                </tr>
+                <tr>
+                    <td class="left"><img style="vertical-align:middle" src="/static/index/images/phone.png" width="24" height="24" alt=""   /></td>
+                    <td class="right"><a style="color:#111" href="tel:15318778939">15318778939</a></td>
+                </tr>
+            </table>
+
+
+
+
+
+
+
+            <div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
+                <span style=" font-weight:bold; "><a href="#">↑加我微信 发红包升级!</a> </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row clearfix">
+
+        <div class="col-xs-12">
+
+            <!--			<div style="margin-right:10px;margin-left:10px;">
+                    <p style="font-size:16px;text-align:center;color:#000000;font-weight:bold;">系统说明</p>
+                    <p style="color:#000000">
+                    1、请点击绿色升级按钮向收款人发起升级申请.长按微信号复制添加为好友，发相应的升级红包金额。</p>
+                    <p style="color:#000000">备注“<b>我的编号2061，很高兴认识您,帮我升级,谢谢！</b>” 同样,你推荐的好友升级都会给您发红包。</p>
+                    <p style="color:#000000">2、每次向上升一级须向您的上级好友发相应的红包金额(微信转红包)，请注意每次升级的用户可能不同。 </p>
+                    <p style="color:#000000">微信发送红包以后，如果对方在24小时没有领取，腾讯公司会自动将红包金额退回到您的账号上，您可以再次发起升级请求。</p>
+                    <p style="color:#000000">3、如果上级好友领取红包后60分钟还没处理您的升级请求，您可以截图(发红包凭证和聊天记录)与平台管理员联系，平台将冻结其账号				</p>
+                    <p style="color:#000000">4、进入个人中心查看自己的会员编号，既可推荐会员注册，注册推荐人填写您的编号即可成为您的下级会员</p>
+                    <p style="color:#000000">5、所有APP下载使用，VIP政策，服务支持请直接联系客服微信：sdskpt</p>
+                    <p style="color:#5C707C">&nbsp;</p>
+                </div>-->
+        </div>
+
+
+
+    </div>
+</div>
+<footer class="footer">
+    <p>&nbsp;</p>
+</footer>
+<script>;</script>
+</html>

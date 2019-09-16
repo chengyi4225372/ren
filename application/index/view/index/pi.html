@@ -1,0 +1,160 @@
+
+<!DOCTYPE html><html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>处理列表</title>
+    <!-- Bootstrap -->
+    <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection">
+    <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/index/js/alert.js"></script>
+</head>
+
+<body style="background: #dfdfdf	url(/static/index/images/pag.jpg)  repeat center;">
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #9c9ce0;">
+    <div class="row">
+
+        <div class="col-xs-3" style="width: 20%;">
+            <div class="center-common">
+                <a href="./index.php?i=1&c=entry&do=index&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                    <div class="img-common">
+                        <img class="banner-img" src="/static/index/images/home.png"></div>升级
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-xs-3" style="width: 20%;">
+            <div class="center-common">
+                <a href="./index.php?i=1&c=entry&do=waitup&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                    <div class="img-common"><img class="banner-img" src="/static/index/images/pz.png"></div>批准
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-3" style="width: 20%;">
+            <div class="center-common">
+                <a href="./index.php?i=1&c=entry&op=qr&do=index&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                    <div class="img-common"><img class="banner-img" src="/static/index/images/list.png"></div>推广
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-3" style="width: 20%;">
+            <div class="center-common">
+                <a href="./index.php?i=1&c=entry&do=youxi&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                    <div class="img-common"><img class="banner-img" src="/static/index/images/wf.png"></div>规则
+                </a>
+            </div>
+        </div>
+
+        <div class="col-xs-3" style="width: 20%;">
+            <div class="center-common">
+                <a href="./index.php?i=1&c=entry&do=myinfo&m=jiexi_aaa" style="color:#FFFFFF;font-size:13px;">
+                    <div class="img-common"><img class="banner-img" src="/static/index/images/my.png"></div>我
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</nav>
+<style>
+    a.c-to-manage{display:inline-block;width: 100%;height: 100%;text-decoration: none;color: #000;}
+    #load-more{  margin: 20px auto;width: 30%;height: 40px;border-radius: 5px;background: green;text-align: center;line-height: 40px;font-size: 20px;color: #fff;cursor: pointer;margin-bottom: 50px;}
+    .deal-btn{height:80px;float:right;line-height:80px;position: absolute;right: 5px;top:-16px}
+    .btn-upgrade{background:#00D13D;color:#FFFFFF;}
+    .btn-upgraded{background: transparent;color: #777}
+    .sty-1{margin-right:-15px;margin-left:-15px;}
+    .sty-2{float:left;height:80px;}
+    .sty-3{height:80px;float:left;margin-left:10px;}
+    .sty-4{text-align:left;font-size:13px;height:20px;margin-top:8px;}
+    .sty-5{text-align:left;font-size:13px;height:20px;}
+    .sty-6{text-align:left;font-size:13px;height:20px;}
+</style>
+<div class="row clearfix">
+    <!-- <div class="weui_btn_default" style="padding:7px 0;color:red;font-size:14px;text-align:center;">
+        提示:点击图片看大图，可长按识别快速加好友
+    </div>-->
+
+    <div class="col-md-12">
+        <div style="margin-right:-15px;margin-left:-15px;">
+            <div class="deal-info" data-type="daishengji" style="border-bottom: 2px solid red;color:red;">
+                <a class="c-to-manage" href="javascript:;"><font color="red">待升级</font></a>
+            </div>
+            <div class="deal-info" data-type="yishengji">
+                <a class="c-to-manage" href="./index.php?i=1&c=entry&do=upok&m=jiexi_aaa">已升级</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix">
+
+
+
+
+    <div class="col-md-12">
+        <div class="hdiv-common" style="height:55px;text-align:center;">
+            <form method="POST" role="form" action="./index.php?i=1&c=entry&do=waitup&m=jiexi_aaa" id="search-post">
+                <input type="text" name="apply_uid" value="" placeholder="&nbsp;&nbsp;请输入会员编号" style="width:65%;margin:0 auto;margin-top:10px;height:40px;background:#FFFFFF;border:1px solid #cdcdcd;text-align:center;font-size:16px;">
+                &nbsp;&nbsp;
+                <button class="weui_btn weui_btn_mini weui_btn_primary" style="height:38px;width:66px" >搜索</button>
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+<div id="data-list-reg" style="background:#ddd;padding:0 12px">
+
+</div>
+<!--
+<div id="load-more">加载更多</div>
+ -->
+
+
+</div>
+<footer class="footer">
+    <p>&nbsp;</p>
+</footer>
+<script>
+    function upgrade(uid,record_id) {
+        if(!confirm('该好友已经发红包给你了吗?')){
+            return;
+        }
+        $.post('./index.php?i=1&c=entry&op=upseturl&do=index&m=jiexi_aaa', {'apply_uid' : uid,'record_id': record_id}, function(data){
+            var info = eval(data);
+            if(info.s == 'ok'){
+                window.location.reload();
+            }else{
+                alert(info.msg);
+            }
+        },'json');
+    }
+
+    function delupgrade(uid,record_id) {
+        if(!confirm('确认删除升级申请?')){
+            return;
+        }
+        console.log('delupgrade');
+        $.post('./index.php?i=1&c=entry&op=delupurl&do=index&m=jiexi_aaa', {'apply_uid' : uid ,'record_id': record_id}, function(data){
+            var info = eval(data);
+
+            if(info.s == 'ok'){
+                window.location.reload();
+            }else{
+                alert(info.msg);
+            }
+        },'json');
+    }
+</script>
+<script>;</script><script type="text/javascript" src="http://aaa.qdshumagang.com/app/index.php?i=1&c=utility&a=visit&do=showjs&m=jiexi_aaa"></script></body>
+</html>
