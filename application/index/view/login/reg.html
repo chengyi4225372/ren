@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册页面</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link href="/static/index/css/register.css" type="text/css" rel="stylesheet">
+    <link href="/static/index/css/global.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/static/index/js/register.js"></script>
+
+    <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/plugs/layui/layui.all.js"></script>
+</head>
+<body>
+<div id="layout">
+    <span>账号注册</span>
+    <form method="post">
+        <ul>
+            <p id="err_msg"></p>
+            <li><i class="un">
+                <img src="/static/index/images/user_name.png">
+            </i><input class="username" type="text" placeholder="请输入推荐人编号"/></li>
+            <li><i class="yz">
+              <img src="/static/index/images/user_name.png">
+            </i><input class="yzm" type="text" placeholder="请输入手机号"/>
+            </li>
+            <li><i class="pw">
+               <img src="/static/index/images/pwd.png">
+            </i><input class="pwd" type="password" placeholder="请输入密码"/>
+            </li>
+            <li><i class="pw2">
+                <img src="/static/index/images/pwd.png">
+            </i><input class="pwd2" type="password" placeholder="请输入确认密码"/></li>
+        </ul>
+        <div class="reg_btn">
+            <button class="submit reg" type="button">注册</button>
+            <a href="{:url('login/login')}"><div class="reg-login"><p>已有帐号，立即登陆</p></div></a>
+        </div>
+    </form>
+
+    <div style="text-align:center;">
+        <p  style="margin-top:40px;font-size:17px;text-align:center;color:#f2dede;font-weight:bold;">有任何疑问，请联系QQ：239487748
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    $('.reg').click(function(){
+        layer.msg('reg');
+    })
+</script>

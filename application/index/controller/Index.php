@@ -13,13 +13,13 @@ use app\index\controller\Common;
      }
 
 
-     //推广 todo 需要修改
+     //互动 todo 需要修改
      public function tui()
      {
          return $this->fetch();
      }
 
-     //规则
+     //推广
      public function  gui()
      {
          return $this->fetch();

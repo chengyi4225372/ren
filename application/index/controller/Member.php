@@ -5,9 +5,21 @@ namespace app\index\controller;
 use app\index\controller\Common;
 use think\Db;
 
-
 class Member extends Common
 {
+
+    //检测用户是否登录
+    /*
+    public function initialize()
+    {
+      parent::initialize();
+      if(!check_login()){
+          $this->redirect('login/login');
+      }
+    }
+    */
+
+
     //个人中心
     public function index(){
         return $this->fetch();
