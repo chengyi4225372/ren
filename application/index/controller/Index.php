@@ -12,13 +12,15 @@ use app\index\controller\Common;
          return $this->fetch();
      }
 
-     //批准
-     public function pi(){
-         return $this->fetch();
-     }
 
      //推广 todo 需要修改
      public function tui()
+     {
+         return $this->fetch();
+     }
+
+     //规则
+     public function  gui()
      {
          return $this->fetch();
      }

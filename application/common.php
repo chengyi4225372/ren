@@ -15,7 +15,6 @@
 use service\DataService;
 use service\NodeService;
 use think\Db;
-use think\Session;
 
 /**
  * 打印输出数据到文件

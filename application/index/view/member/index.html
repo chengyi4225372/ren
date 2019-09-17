@@ -1,10 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
+<!DOCTYPE html><html lang="zh-cn"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>个人中心</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection">
+</head>
+
+<body style="background: #dfdfdf	url(/static/index/images/pag.jpg)  repeat center;">
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #9c9ce0;">
+        <div class="row">
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="{:url('index/index')}" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common">
+                            <img class="banner-img" src="/static/index/images/home.png"></div>升级
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="{:url('member/pi')}" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/pz.png"></div>批准
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="{:url('index/tui')}" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/list.png"></div>推广
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="{:url('index/gui')}" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/wf.png"></div>规则
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xs-3" style="width: 20%;">
+                <div class="center-common">
+                    <a href="{:url('member/index')}" style="color:#FFFFFF;font-size:13px;">
+                        <div class="img-common"><img class="banner-img" src="/static/index/images/my.png"></div>我
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </nav>
+    <style>
+        td{text-align: left;}
+        td.td-r{text-align: right;}
+        div.bgimg{height:260px;margin-bottom: 15px;}
+        .bgimg div.u-avatar-reg{float:left;text-align:center;width:130px;margin-top: 60px;}
+        .bgimg div.u-avatar{width:100px;height:100px;margin-top:10px;}
+        .bgimg div.u-profile-reg{text-align:left;margin-left:135px;margin-top: 55px;font-size:16px;}
+        .center-common p{
+            display: block;
+            overflow: hidden;
+            height: 16px;
+
+            line-height: 16px;
+        }
+    </style>
+
+
+    <div class="row clearfix bgimg">
+        <div class="center-common u-avatar-reg">
+            &nbsp;<a href="./index.php?i=1&c=entry&op=edit&do=index&m=jiexi_aaa"><img src="/static/index/images/blank.jpg" style="width:90px;height:90px;" alt="头像" class=" u-avatar"></a>
+            <p>ID:2061</p>
+            <p style="color:green">好友2个 </p>
+
+        </div>
+        <div class="center-common u-profile-reg">
+            <p>会员编号:2061 [上级ID:2060]</p>
+            <p>手机号码：17353993431 </p>
+            <p>微信账号：gxt6988</p>
+            <p>会员等级：二星</p>
+
+            <p style="height:60px;margin-top:-15px;">
+                <a href="{:url('member/info')}"
+                   style="width:100px;height:32px;line-height:32px;display:inline-block;"
+                   class="weui_btn weui_btn_mini weui_btn_primary">修改资料</a>
+
+                <a href="{:url('member/logout')}"
+                    style="width:100px;height:32px;line-height:32px;display:inline-block;"
+                    class="weui_btn weui_btn_mini weui_btn_warn">安全退出</a>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row clearfix"  style="margin-top:-30px;">
+        <div class="col-md-12">
+            <div class="thumbnail hdiv-common" style="margin-left:-10px;margin-right:-10px;">
+                <div  style=" margin-bottom:20px; height:60px;">
+                    <p class="weui_btn weui_btn_default" style="padding:5px 0;color:red;font-size:14px;text-align:center;">
+                        您可以继续升级交更多好友，收更多红包哦！
+                    </p>
+                    <p style="font-size:14px;text-align:center;">
+                        <a href="{:url('index/index')}" class="weui_btn weui_btn_primary">
+                            点击马上升级
+                        </a>
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="thumbnail" style="margin-left:-8px;margin-right:-8px;">
+                <div style="height:26px;">
+                    <p style="color:#333333;font-weight:bold;">
+                        &nbsp;
+                        <span><img src="/static/index/images/my_mi.png" width="26"></span>
+                        &nbsp;我的收入
+                        <span style="float:right;line-height: 25px;margin-right:10px;color:red;">
+						10 元
+					</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="thumbnail" style="margin-left:-8px;margin-right:-8px;">
+                <a href="{:url('member/xia')}">
+                    <div style="height:26px;">
+                        <p class="click-dis" style="font-weight:bold;"  data-value="">&nbsp;
+                            <span><img src="/static/index/images/level_1.png" width="26">&nbsp;</span>
+                            <span style="color:#010207;">&nbsp;一星下级&nbsp;</span>
+                            <span style="float:right;line-height: 25px;"><img src="/static/index/images/down.jpg">&nbsp;&nbsp;</span>
+                            <span style="float:right;color:#FFFFFF;font-weight:bold;background: url(/static/index/images//noread.png);width: 34px;text-align:center;margin-top:4px;">2</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="thumbnail" style="margin-left:-8px;margin-right:-8px;">
+                <a href="{:url('member/xia')}">
+                    <div style="height:26px;">
+                        <p class="click-dis" style="font-weight:bold;"  data-value="">&nbsp;
+                            <span><img src="/static/index/images/level_2.png" width="26">&nbsp;</span>
+                            <span style="color:#010207;">&nbsp;二星下级&nbsp;</span>
+                            <span style="float:right;line-height: 25px;"><img src="/static/index/images/down.jpg">&nbsp;&nbsp;</span>
+                            <span style="float:right;color:#FFFFFF;font-weight:bold;background: url(/static/index/images/noread.png);width: 34px;text-align:center;margin-top:4px;">0</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="thumbnail hdiv-common" style="margin-left:-10px;margin-right:-10px;">
+                <div  style=" margin-bottom:30px; height:60px;  "  >
+                    <p class="weui_btn weui_btn_default" style="padding:5px 0;color:red;font-size:14px;text-align:center;">
+                        您可以继续升级交更多好友，收更多红包哦！
+                    </p>
+                    <p style="font-size:14px;text-align:center;">
+                        <a href="{:url('index/index')}" class="weui_btn weui_btn_primary">
+                            点击马上升级
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="footer">
+    <p>&nbsp;</p>
+</footer>
 </html>
