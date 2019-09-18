@@ -8,7 +8,6 @@
     <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection" />
     <script src="/static/index/js/jquery.min.js"></script>
-    <script src="/static/index/js/main.js"></script>
     <script src="/static/plugs/layui/layui.all.js"></script>
 
 
@@ -20,11 +19,13 @@
     <div class="main">
         <div class="list-wrap">
             <div class="list">
-                <div class="turn rlt">
-                    <img class="head" src="/static/index/images/p1.jpg" alt=""/>
-                </div>
+                <a href="{:url('index/hu')}">
+                    <div class="turn rlt">
+                        <img class="head" src="/static/index/images/p1.jpg" alt="" />
+                    </div>
+                </a>
                 <div class="info">
-                    <a href="detail.html">
+                    <a href="{:url('index/hu')}">
                         <p class="clearfix">
                             <span class="salary fr">发布人：<span>张三分</span></span>
                         </p>
@@ -33,11 +34,14 @@
             </div>
 
             <div class="list">
+                <a href="{:url('index/hu')}">
                 <div class="turn rlt">
                     <img class="head" src="/static/index/images/p1.jpg" alt="" />
                 </div>
+                </a>
+
                 <div class="info">
-                    <a href="detail.html">
+                    <a href="{:url('index/hu')}">
                         <p class="clearfix">
                             <span class="salary fr">发布人：<span>张无忌</span></span>
                         </p>
@@ -48,7 +52,7 @@
         </div>
 
         <a href="javascript:" class="more">加载更多</a>
-        
+
     </div>
 </div>
 

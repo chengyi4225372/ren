@@ -4,6 +4,7 @@ namespace app\index\controller;
 
 use app\index\controller\Common;
 use think\Db;
+use think\Session;
 
 class Member extends Common
 {
@@ -50,7 +51,9 @@ class Member extends Common
 
     //退出
     public function logout(){
-        return true;
+        session('member',null);
+        session_destroy();
+        $this->redirect('login/login');
     }
 
 

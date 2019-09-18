@@ -8,6 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
+
     <link href="/static/index/css/login.css" type="text/css" rel="stylesheet">
     <link href="/static/index/css/global.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
@@ -24,10 +25,10 @@
                 <li>
                     <img data-cfsrc="images/login_user.png" style="display:none;visibility:hidden;">
                     <img src="/static/index/images/login_user.png">
-                    <input type="text" class="text" placeholder="请输入用户名" /></li>
+                    <input type="text" id="user" class="text" placeholder="请输入用户名" /></li>
                 <li><img data-cfsrc="/static/index/images/login_pwd.png" style="display:none;visibility:hidden;">
                     <img src="/static/index/images/login_pwd.png">
-                    <input type="password" class="psd" placeholder="请输入确认密码" /></li>
+                    <input type="password" class="psd" id="pwd" placeholder="请输入确认密码" /></li>
             </ul>
         </div>
         <div class="login-btn">
@@ -50,6 +51,38 @@
 
 <script>
     $('.log').click(function(){
-        layer.msg(1111);
+       var data = {};
+
+       data.user = $('#user').val();
+       data.pwd  = $('#pwd').val();
+
+       if(data.user == '' || data.user == undefined){
+           layer.msg('用户名不能为空');
+           return false;
+       }
+
+       if(data.pwd == '' || data.pwd== undefined){
+           layer.msg('请输入用户密码');
+           return false;
+       }
+
+       var url = "{:url('login/login')}" ;
+       $.post(url,data,function(ret){
+             if(ret.code == 200){
+                 layer.msg(ret.msg,function(){
+                     parent.location.href="{:url('index/index')}";
+                 });
+             }
+
+             if(ret.code == 401){
+                 layer.msg(ret.msg);
+                 return ;
+             }
+
+             if(ret.code == 400){
+                 layer.msg(ret.msg);
+                 return ;
+             }
+       },'json')
     })
 </script>

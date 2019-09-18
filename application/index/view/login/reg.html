@@ -10,7 +10,6 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <link href="/static/index/css/register.css" type="text/css" rel="stylesheet">
     <link href="/static/index/css/global.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="/static/index/js/register.js"></script>
 
     <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/plugs/layui/layui.all.js"></script>
@@ -23,18 +22,19 @@
             <p id="err_msg"></p>
             <li><i class="un">
                 <img src="/static/index/images/user_name.png">
-            </i><input class="username" type="text" placeholder="请输入推荐人编号"/></li>
+            </i><input class="username"  id='orderNo' type="text" placeholder="请输入推荐人编号 选填"/></li>
             <li><i class="yz">
               <img src="/static/index/images/user_name.png">
-            </i><input class="yzm" type="text" placeholder="请输入手机号"/>
+            </i>
+                <input class="yzm"  id='user' type="text" placeholder="请输入手机号" onblur="check_user()"/>
             </li>
             <li><i class="pw">
                <img src="/static/index/images/pwd.png">
-            </i><input class="pwd" type="password" placeholder="请输入密码"/>
+            </i><input class="pwd" id="pwd" type="password" placeholder="请输入密码"/>
             </li>
             <li><i class="pw2">
                 <img src="/static/index/images/pwd.png">
-            </i><input class="pwd2" type="password" placeholder="请输入确认密码"/></li>
+            </i><input class="pwd2" id="pwd2" type="password" placeholder="请输入确认密码"/></li>
         </ul>
         <div class="reg_btn">
             <button class="submit reg" type="button">注册</button>
@@ -52,6 +52,62 @@
 </html>
 <script>
     $('.reg').click(function(){
-        layer.msg('reg');
-    })
+       var zhu = {};
+
+       zhu.orderNo = $('#orderNo').val();
+       zhu.user    = $('#user').val();
+       zhu.pwd     = $('#pwd').val();
+       zhu.pwd2    = $('#pwd2').val();
+
+      if(zhu.user == '' || zhu.user == undefined){
+          layer.msg('用户名不能为空');
+          return;
+      }
+
+      if(zhu.pwd == '' || zhu.pwd2 ==''){
+          layer.msg('请输入您的注册密码');
+          return
+      }
+
+      if(zhu.pwd != zhu.pwd2){
+          layer.msg('两次输入密码不一致');
+          return false;
+      }
+
+      check_user();
+
+      var  url = "{:url('login/reg')}";
+      $.post(url,zhu,function(ret){
+           if(ret.code == 200){
+               layer.msg(ret.msg,function(){
+                   parent.location.href ="{:url('login/login')}";
+               });
+
+             if(ret.code == 400){
+                 layer.msg(ret.msg);
+                 return ;
+             }
+
+           }
+      },'json')
+    });
+
+
+    function check_user(){
+        var user = $('#user').val();
+
+        var url = "{:url('login/check')}";
+        $.post(url,{'user':user},function(ret){
+            if(ret.code == 404){
+                layer.tips(ret.msg,'#user');
+                $('.reg').attr('disabled',true);
+                return ;
+            }
+
+            if(ret.code == 200){
+                layer.tips(ret.msg,'#user',{tips:[1,'#78BA32']});
+            }
+        },'json')
+    }
+
 </script>

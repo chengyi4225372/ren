@@ -19,6 +19,12 @@ use app\index\controller\Common;
          return $this->fetch();
      }
 
+     //互动详情
+     public function hu()
+     {
+         return  $this->fetch();
+     }
+
      //推广
      public function  gui()
      {

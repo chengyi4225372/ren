@@ -321,7 +321,7 @@ function isMobile()
 
 function check_login()
 {
-    if(Session('member')){
+    if(session('member')){
         return true;
     }else{
         return false;
