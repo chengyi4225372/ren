@@ -8,7 +8,6 @@ use app\index\controller\Common;
 
      //首页
      public function index(){
-
          return $this->fetch();
      }
 

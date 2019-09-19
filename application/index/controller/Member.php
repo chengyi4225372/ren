@@ -36,11 +36,6 @@ class Member extends Common
     }
 
 
-    //退出
-    public function logout(){
-        $this->session->delete('member');
-        $this->redirect('login/login');
-    }
 
 
 }

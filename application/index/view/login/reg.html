@@ -99,7 +99,7 @@
         var url1 = "{:url('login/check')}";
         $.post(url1,{'user':user},function(ret){
             if(ret.code == 404){
-                layer.tips(ret.msg,'#user');
+                alert(ret.msg);
                 $('.reg').attr('disabled',true);
                 return ;
             }

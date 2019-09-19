@@ -83,6 +83,12 @@
                  layer.msg(ret.msg);
                  return ;
              }
+
+           if(ret.code == 500){
+               layer.msg(ret.msg);
+               return ;
+           }
+
        },'json')
     })
 </script>
