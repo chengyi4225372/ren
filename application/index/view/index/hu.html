@@ -25,18 +25,46 @@
         <img class="head" src="/static/index/images/p1.jpg" alt=""/>
     </div>
     <div class="attr">
-        <h3>您的留言</h3>
+        <h3>评论：</h3>
         <div class="tr clearfix">
-            <div class="td td1 fl">请输入您的留言：</div>
-            <div contenteditable="true"></div>
+            <div class="td ">游客</div>
+            <div class="td">这是一个什么东西的的。。。</div>
+        </div>
+
+        <div class="tr clearfix">
+            <div class="td ">游客</div>
+            <div class="td">这是一个什么东西的的。。。</div>
+        </div>
+
+        <div class="tr clearfix">
+            <div class="td ">游客</div>
+            <div class="td">这是一个什么东西的的。。。</div>
+        </div>
+
+        <div class="tr clearfix">
+            <div class="td ">游客</div>
+            <div class="td">这是一个什么东西的的。。。</div>
+        </div>
+
+        <div class="tr clearfix">
+
+                <textarea  id="content" placeholder="请输入您的评论" style="overflow: hidden;height: 60px; width: 100%; margin-top: 10px;"></textarea>
+
         </div>
 
     </div>
 </div>
 
+
 <div class="publish">
-    <a href="javascript:" class="rent">提交</a>
+    <a  class="rent" data-url="">提交</a>
 </div>
+
+<script>
+    $('.rent').click(function(){
+     layer.msg('hello world');
+    })
+</script>
 
 
 </body>

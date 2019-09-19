@@ -318,12 +318,3 @@ function isMobile()
     return false;
 }
 
-
-function check_login()
-{
-    if(session('member')){
-        return true;
-    }else{
-        return false;
-    }
-}

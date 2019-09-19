@@ -96,8 +96,8 @@
     function check_user(){
         var user = $('#user').val();
 
-        var url = "{:url('login/check')}";
-        $.post(url,{'user':user},function(ret){
+        var url1 = "{:url('login/check')}";
+        $.post(url1,{'user':user},function(ret){
             if(ret.code == 404){
                 layer.tips(ret.msg,'#user');
                 $('.reg').attr('disabled',true);

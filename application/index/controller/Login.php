@@ -11,7 +11,15 @@ class Login extends Common
     public function login(){
 
         if($this->request->isGet()){
-            return $this->fetch();
+
+            if(!$this->session->get('member')){
+                return $this->fetch();
+            }
+
+            if($this->session->get('member')){
+                $this->redirect('member/index');
+            }
+
         }
 
         if($this->request->isPost()){
@@ -29,14 +37,13 @@ class Login extends Common
             }
 
             if($res && $res['pwd'] ==md5(md5($pwd).$res['rand'])){
-                session('member',$res);
+                $this->session->set('member',$res);
                 return json(['code'=>200,'msg'=>'登陆成功']);
             }
 
         }
 
     }
-
 
     //注册
     public function reg(){

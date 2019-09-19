@@ -225,7 +225,7 @@ header{
 }
 /*��ҲҪ����*/
 .publish{
-    position: fixed;
+   /* position: fixed;*/
     left: 0;
     bottom: 0;
     background-color: #9c9ce0;
