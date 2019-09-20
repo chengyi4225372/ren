@@ -36,6 +36,17 @@ class Member extends Common
     }
 
 
+    //发布
+    public function fabu(){
+        return $this->fetch();
+    }
+
+
+    //修改密码
+    public function editpwd(){
+
+        return $this->fetch();
+    }
 
 
 }

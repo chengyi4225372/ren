@@ -13,6 +13,7 @@ class Login extends Controller
     public function login(){
 
         if($this->request->isGet()){
+
              if($this->request->action() == 'login'){
                  if(!empty(session('member')) && is_array(session('member'))){
                     return $this->redirect('member/index');

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>完善资料-开始游戏</title>
+    <title>上传互动图片</title>
     <!-- Bootstrap -->
     <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection" />
@@ -20,7 +20,7 @@
 
 </head>
 <body style="background: url(/static/index/images/pag.jpg) no-repeat;background-size: 200%, 100%;">
-<div class="container-fluid">
+<body class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #9c9ce0;">
         <div class="row">
 
@@ -70,65 +70,31 @@
         </div>
     </nav>
 
-    <form  enctype="multipart/form-data"  action="" method="post">
         <div class="row clearfix">
             <div class="col-xs-12">
-                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(../addons/jiexi_aaa/template/mobile/image/pag.jpg) no-repeat;background-size: 200%, 100%;">
+                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(/static/index/images/pag.jpg) no-repeat;background-size: 200%, 100%;">
 
-                    <div  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">完善资料 收获更多红包</div>
+
                     <div style="margin-top:10px;">
                         <img src="" width="100" height="100" alt="" />
                         <br/>
-                        <label class="">上传您的头像,方便好友识别您</label>
+                        <label class="">上传互动图片</label>
 
                         <input type="file" name="face" class="formdd-control" style="width:80%;margin:0 auto;" value="上传">
 
                     </div>
 
-
-                    <div style="margin-top:10px;">
-                        <img src="/attachment/upload/201906300017124100.jpg" width="100" height="100" alt="" />
-                        <br/>
-                        <label class=""><span class="star">*</span>上传微信二维码,方便好友给您发红包</label>
-
-                        <input type="file" name="uploadfile" class="formdd-control" style="width:80%;margin:0 auto;" value="上传">
-
-                    </div>
-                    <div style="margin-top:15px; ">
-                        <label class=""><span class="star">*</span>手机号码</label>
-                        <input type="text" id="mobile" name="mobile" value="17353993431"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;"></div>
-
-                    <input type="hidden" id="mobile2" name="mobile2" value="17353993431"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;">
-
-
-                    <div style="margin-top:15px;">
-                        <label class=""><span class="star">*</span>微信帐号</label>
-                        <input type="text" id="wechat" name="wechat" value="gxt6988" class="formdd-control" placeholder="请输入微信号" style="width:80%;margin:0 auto;"></div>
-
-                    <div style="margin-top:25px;">
-
-                        <button type="submit"  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">提交</button></div>
+                        <button type="button"  class="btn bold-common imgs" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">提交</button></div>
 
                 </div>
             </div>
         </div>
-    </form>
+
     <footer class="footer">
         <p>&nbsp;</p>
     </footer>
-    <script>
-        function save() {
-            mydata = {
-                'wechat' : $('#wechat').val(),
-                'qq' : $('#qq').val(),
-                'mobile' : $('#mobile').val()
-            };
-            $.post('./index.php?i=1&c=entry&op=edit&do=index&m=jiexi_aaa', mydata, function(data){
-                var info = eval(data);
-                alert(info.msg);
-            },'json');
-        }
-    </script>
+
+</body>
 </html>
 
 
