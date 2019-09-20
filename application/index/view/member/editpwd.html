@@ -14,6 +14,9 @@
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="/static/index/js/jquery.min.js"></script>
+    <script src="/static/plugs/layui/layui.all.js"></script>
+
+
     <style type="text/css">
         .star{color:red}
     </style>
@@ -70,23 +73,26 @@
         </div>
     </nav>
 
-    <form  enctype="multipart/form-data"  action="" method="post">
+    <form  enctype="multipart/form-data"  method="post">
         <div class="row clearfix">
             <div class="col-xs-12">
-                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(../addons/jiexi_aaa/template/mobile/image/pag.jpg) no-repeat;background-size: 200%, 100%;">
+                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(/static/index/images/pag.jpg) no-repeat;background-size: 200%, 100%;">
 
+                    <input type="hidden" id="mid" value="{$Think.session.member.id}">
 
                     <div style="margin-top:15px;">
                         <label class=""><span class="star">*</span>旧密码</label>
-                        <input type="password" id="password" name="password_old" value="" class="formdd-control" placeholder="请输入旧密码（不修改默认为空）" style="width:80%;margin:0 auto;"></div>
+                        <input type="password" id="oldpwd" name="password_old" value="" class="formdd-control" placeholder="请输入旧密码（不修改默认为空）" style="width:80%;margin:0 auto;">
+                    </div>
 
                     <div style="margin-top:15px;">
                         <label class=""><span class="star">*</span>新密码</label>
-                        <input type="password" id="password" name="password_new" value="" class="formdd-control" placeholder="请输入新密码（不修改默认为空）" style="width:80%;margin:0 auto;"></div>
+                        <input type="password" id="newpwd" name="password_new" value="" class="formdd-control" placeholder="请输入新密码（不修改默认为空）" style="width:80%;margin:0 auto;">
+                    </div>
 
 
 
-                        <button type="submit"  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">提交</button></div>
+                        <button type="button"  class="btn bold-common edit" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">提交</button></div>
 
                 </div>
             </div>
@@ -95,9 +101,46 @@
     <footer class="footer">
         <p>&nbsp;</p>
     </footer>
-    <script>
 
-    </script>
+<script>
+ $('.edit').click(function(){
+     var data = {};
+
+     data.id     = $('#mid').val();
+     data.oldpwd = $('#oldpwd').val();
+     data.newpwd = $('#newpwd').val();
+
+     if(data.oldpwd == '' || data.newpwd ==''){
+           layer.msg('请填写密码');
+           return;
+     }
+     var url = "{:url('member/editpwd')}";
+
+     $.post(url,data,function(ret){
+
+        if(ret.code == 200){
+              layer.msg(ret.msg,function(){
+                  parent.location.href="{:url('member/index')}";
+              })
+          };
+
+         if(ret.code == 400){
+             layer.msg(ret.msg);
+             return false;
+         };
+
+         if(ret.code == 404){
+             layer.msg(ret.msg);
+             return false;
+         };
+
+     },'json')
+ })
+
+
+</script>
+
+</body>
 </html>
 
 
