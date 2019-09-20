@@ -21,7 +21,7 @@ file_exists($session_path) || mkdir($session_path, 0755, true);
 return [
     'id'             => '',
     'type'           => '',
-    'prefix'         => 'ta',
+    'prefix'         =>'module',
     'auto_start'     => true,
     'path'           => $session_path,
     'name'           => $session_name,

@@ -4,7 +4,6 @@ namespace app\index\controller;
 
 use think\Controller;
 use think\Db;
-use think\Session;
 use think\Request;
 class Common extends Controller {
 
@@ -17,21 +16,15 @@ class Common extends Controller {
    {
        parent::initialize();
        $this->request;
-       $this->session = new Session;
        $this->check_login();
    }
 
 
     protected function check_login()
     {
-        if($this->session->get('member') != ''){
-             $this->redirect('index/index');
+        if(empty(session('member')) && !is_array(session('member'))){
+              $this->redirect('login/login');
         }
-
-        if($this->session->get('member') == ''){
-             $this->redirect('login/login');
-        }
-
 
     }
 
