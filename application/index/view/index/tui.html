@@ -18,37 +18,22 @@
 
     <div class="main">
         <div class="list-wrap">
+            {volist name='list' id='vo'}
             <div class="list">
-                <a href="{:url('index/hu')}">
+                <a href="{:url('index/hu')}?id={$vo.id}">
                     <div class="turn rlt">
-                        <img class="head" src="/static/index/images/p1.jpg" alt="" />
+                        <img class="head" src="{$vo.imgs}" alt="" />
                     </div>
                 </a>
                 <div class="info">
-                    <a href="{:url('index/hu')}">
+                    <a href="{:url('index/hu')}?id={$vo.id}">
                         <p class="clearfix">
-                            <span class="salary fr">发布人：<span>张三分</span></span>
+                            <span class="salary fr">发布人：<span>{:substr_replace($names[$vo.mid], '****','3','4')}</span></span>
                         </p>
                     </a>
                 </div>
             </div>
-
-            <div class="list">
-                <a href="{:url('index/hu')}">
-                <div class="turn rlt">
-                    <img class="head" src="/static/index/images/p1.jpg" alt="" />
-                </div>
-                </a>
-
-                <div class="info">
-                    <a href="{:url('index/hu')}">
-                        <p class="clearfix">
-                            <span class="salary fr">发布人：<span>张无忌</span></span>
-                        </p>
-                    </a>
-                </div>
-            </div>
-
+            {/volist}
         </div>
 
         <a href="javascript:" class="more">加载更多</a>

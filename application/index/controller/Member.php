@@ -8,7 +8,7 @@ use think\Db;
 class Member extends Common
 {
 
-    protected $member ='r_member';
+    protected $member = 'r_member';
 
     protected $hudong = 'r_hudong';
 
@@ -17,12 +17,6 @@ class Member extends Common
     public function index(){
         return $this->fetch();
     }
-
-    //个人资料
-    public function info(){
-        return $this->fetch();
-    }
-
 
     //下级页面
     public function xia(){
@@ -40,6 +34,18 @@ class Member extends Common
         return $this->fetch();
     }
 
+    //个人资料
+    public function info(){
+
+        if($this->request->isGet()){
+            return $this->fetch();
+        }
+
+        if($this->request->isPost()){
+              return true;
+        }
+
+    }
 
     //发布
     public function fabu(){

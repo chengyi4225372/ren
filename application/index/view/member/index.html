@@ -73,33 +73,34 @@
         .center-common p{
             display: block;
             overflow: hidden;
-            height: 16px;
-
-            line-height: 16px;
+            height: 18px;
+            line-height: 18px;
         }
     </style>
 
 
     <div class="row clearfix bgimg">
         <div class="center-common u-avatar-reg">
-            &nbsp;<a href="./index.php?i=1&c=entry&op=edit&do=index&m=jiexi_aaa"><img src="/static/index/images/blank.jpg" style="width:90px;height:90px;" alt="头像" class=" u-avatar"></a>
-            <p>ID:2061</p>
+            <a href="{:url('member/info')}">
+            <img src="/static/index/images/blank.jpg" style="width:90px;height:90px;" alt="头像" class=" u-avatar">
+            </a>
+            <p>ID:{Think.session.member.id}</p>
             <p style="color:green">好友2个 </p>
 
         </div>
         <div class="center-common u-profile-reg">
-            <p>会员编号:2061 [上级ID:2060]</p>
-            <p>手机号码：17353993431 </p>
-            <p>微信账号：gxt6988</p>
-            <p>会员等级：二星</p>
+            <p>会员编号:{$Think.session.member.id} [上级ID:2060]</p>
+            <p>手机号码:{$Think.session.member.users|default=''} </p>
+            <p>微信账号:gxt6988</p>
+            <p>会员等级:{$Think.session.member.level|default=''}星</p>
 
             <p style="height:60px;margin-top:-15px;">
                 <a href="{:url('member/info')}"
-                   style="width:100px;height:32px;line-height:32px;display:inline-block;"
+                   style="/*width:120px;height:32px;line-height:32px;display:inline-block;*/"
                    class="weui_btn weui_btn_mini weui_btn_primary">修改资料</a>
 
                 <a href="{:url('login/logout')}"
-                    style="width:100px;height:32px;line-height:32px;display:inline-block;"
+                    style=" /* width:120px;height:32px;line-height:32px;display:inline-block;*/"
                     class="weui_btn weui_btn_mini weui_btn_warn">安全退出</a>
             </p>
         </div>

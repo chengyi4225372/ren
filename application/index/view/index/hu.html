@@ -11,7 +11,6 @@
     <link href="/static/index/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/index/css/common.css" media="screen, projection" />
     <script src="/static/index/js/jquery.min.js"></script>
-    <script src="/static/index/js/main.js"></script>
     <script src="/static/plugs/layui/layui.all.js"></script>
 
 </head>
@@ -22,29 +21,18 @@
 </header>
 <div class="detail">
     <div class="turn rlt" style="padding: 5px;border-bottom: 1px dashed #ddd;">
-        <img class="head" src="/static/index/images/p1.jpg" alt=""/>
+        <img class="head" src="{$info.imgs}" alt=""/>
     </div>
     <div class="attr">
-        <h3>评论：</h3>
+        <h3>评论列表：</h3>
+        {volist name='message' id='vo'}
         <div class="tr clearfix">
-            <div class="td ">游客</div>
-            <div class="td">这是一个什么东西的的。。。</div>
+            <div class="td ">{:substr_replace($names[$vo.hid])}</div>
+            <div class="td">{$vo.content}</div>
         </div>
 
-        <div class="tr clearfix">
-            <div class="td ">游客</div>
-            <div class="td">这是一个什么东西的的。。。</div>
-        </div>
+        {/volist}
 
-        <div class="tr clearfix">
-            <div class="td ">游客</div>
-            <div class="td">这是一个什么东西的的。。。</div>
-        </div>
-
-        <div class="tr clearfix">
-            <div class="td ">游客</div>
-            <div class="td">这是一个什么东西的的。。。</div>
-        </div>
 
         <div class="tr clearfix">
 
@@ -52,17 +40,43 @@
 
         </div>
 
+        <input type="hidden" id="hid" value="{$info.id}">
+
     </div>
 </div>
 
 
 <div class="publish">
-    <a  class="rent" data-url="">提交</a>
+    <a  class="rent mess" >提交评论</a>
 </div>
 
 <script>
-    $('.rent').click(function(){
-     layer.msg('hello world');
+    $('.mess').click(function(){
+       var data     = {};
+       data.hid      =  $('#hid').val();
+       data.content  =  $('#content').val();
+
+       if(data.content == '' || data.content == undefined){
+          layer.msg('请输入评论内容！');
+          return;
+       }
+       var url = "{:url('index/tmessage')}";
+
+       $.post(url,data,function(ret){
+             if(ret.code == 200){
+               layer.msg(ret.msg,function(){
+                   parent.location.reload();
+               })
+             };
+
+           if(ret.code == 400){
+               layer.msg(ret.msg,function(){
+                   parent.location.reload();
+               })
+           };
+
+       },'json')
+
     })
 </script>
 
