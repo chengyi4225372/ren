@@ -68,9 +68,9 @@ use app\index\controller\Common;
                 return json(['code'=>403,'msg'=>'数据丢失，提交数据不合法']);
             }
 
-          if(empty($data['mid']) || $data['mid'] <= 0){
+            if(empty($data['mid']) || $data['mid'] <= 0){
               return json(['code'=>403,'msg'=>'数据丢失，提交数据不合法']);
-           }
+            }
 
             $ret = Db::name($this->message)->insertGetId($data);
 

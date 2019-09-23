@@ -15,10 +15,13 @@
     <![endif]-->
     <script src="/static/index/js/jquery.min.js"></script>
     <script src="/static/index/js/main.js"></script>
+    <script src="/static/plugs/layui/layui.all.js"></script>
 
 
     <style type="text/css">
         .star{color:red}
+
+        .uploadfile{position: absolute;opacity: 0;}
     </style>
 
 </head>
@@ -73,56 +76,161 @@
         </div>
     </nav>
 
-    <form  enctype="multipart/form-data"  action="" method="post">
+
         <div class="row clearfix">
             <div class="col-xs-12">
                 <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(/static/index/images/pag.jpg) no-repeat;background-size: 200%, 100%;">
 
                     <div  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">完善资料 收获更多红包</div>
                     <div style="margin-top:10px;">
-                        <img src="" width="100" height="100" alt="" />
+                        <img id="imgs" src="{$info.imgs|default='/static/index/images/pic_fill.png'}" width="100" height="100" alt="" />
+                        <input type="file" id="file" class="uploadfile" onchange="showImgs();">
+                        <input type="hidden" id="Imgs1" value="">
+
                         <br/>
                         <label class="">上传您的头像,方便好友识别您</label>
-
-                        <input type="file" name="face" class="formdd-control" style="width:80%;margin:0 auto;" value="上传">
 
                     </div>
 
 
                     <div style="margin-top:10px;">
-                        <img src="" width="100" height="100" alt="" />
+                        <img  id='wechat' src="{$info.wechat|default='/static/index/images/pic_fill.png'}" width="100" height="100" alt="" />
+                        <input type="file" id="file1" class="uploadfile" onchange="showWechat();">
+                        <input type="hidden" id="Imgs2" value="">
+
                         <br/>
+
                         <label class=""><span class="star">*</span>上传微信二维码,方便好友给您发红包</label>
-
-                        <input type="file" name="uploadfile" class="formdd-control" style="width:80%;margin:0 auto;" value="上传">
-
                     </div>
+
                     <div style="margin-top:15px; ">
                         <label class=""><span class="star">*</span>手机号码</label>
-                        <input type="text" id="mobile" name="mobile" value=""  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;"></div>
-
-                    <input type="hidden" id="mobile2" name="mobile2" value=""  class="formdd-control">
-
+                        <input type="text" id="users" name="users" value="{$info.users}"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;">
+                    </div>
 
                     <div style="margin-top:15px;">
                         <label class=""><span class="star">*</span>微信帐号</label>
-                        <input type="text" id="wechat" name="wechat" value="gxt6988" class="formdd-control" placeholder="请输入微信号" style="width:80%;margin:0 auto;"></div>
+                        <input type="text" id="wx" name="wx" value="{$info.wx}" class="formdd-control" placeholder="请输入微信号" style="width:80%;margin:0 auto;">
+                    </div>
+
+                    <div style="margin-top:15px;">
+                        <label class=""><span class="star">*</span>支付宝帐号</label>
+                        <input type="text" id="ali" name="ali" value="{$info.ali}" class="formdd-control" placeholder="请输入支付宝号" style="width:80%;margin:0 auto;">
+                    </div>
+
+                    <input type="hidden" id="mid" value="{$Think.session.member.id}">
 
                     <div style="margin-top:25px;">
-
-                        <button type="submit"  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">提交</button></div>
+                        <button type="button"  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;" id="safe">提交</button>
+                    </div>
 
                 </div>
             </div>
         </div>
-    </form>
+
     <footer class="footer">
         <p>&nbsp;</p>
     </footer>
     <script>
+     $(function(){
+         $('#imgs').click(function(){
+             $('#file').click();
+         });
 
+         $('#wechat').click(function(){
+             $('#file1').click();
+         })
+     })
+
+   function showImgs(){
+       var formData = new FormData();
+       formData.append("file",$("#file")[0].files[0]);
+
+       $.ajax({
+           url:"{:url('Common/uploads')}",
+           type:'post',
+           data: formData,
+           contentType: false,
+           processData: false,
+           success:function(res){
+               if(res.code == 200){
+                   layer.msg(res.msg,function(){
+                       $('#imgs').attr('src',res.path);
+                       $('#Imgs1').val(res.path);
+                   })
+               }
+
+               if(res.code == 400){
+                   layer.msg(res.msg);
+                   return ;
+               }
+           }
+       })
+   }
+
+   function showWechat(){
+       var formData = new FormData();
+       formData.append("file",$("#file1")[0].files[0]);
+
+       $.ajax({
+           url:"{:url('Common/uploads')}",
+           type:'post',
+           data: formData,
+           contentType: false,
+           processData: false,
+           success:function(res){
+               if(res.code == 200){
+                   layer.msg(res.msg,function(){
+                       $('#wechat').attr('src',res.path);
+                       $('#Imgs2').val(res.path);
+                   })
+               }
+
+               if(res.code == 400){
+                   layer.msg(res.msg);
+                   return ;
+               }
+           }
+       })
+   }
+
+
+
+  //提交
+    $('#safe').click(function(){
+          var data = {};
+          data.imgs   =   $('#Imgs1').val();
+          data.wechat = $('#Imgs2').val();
+          data.wx     = $('#wx').val();
+          data.ali    = $('#ali').val();
+          data.mid    = $('#mid').val();
+          data.users  = $('#users').val();
+
+
+
+          var url = "{:url('member/info')}";
+
+          $.post(url,data,function(ret){
+               if(ret.code == 200){
+                   layer.msg(ret.msg,function(){
+                       parent.location.reload();
+                   })
+               }
+
+              if(ret.code == 400){
+                  layer.msg(ret.msg,function(){
+                      parent.location.reload();
+                  })
+              }
+
+
+          },'json')
+
+    })
 
     </script>
+</div>
+</body>
 </html>
 
 

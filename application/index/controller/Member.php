@@ -38,11 +38,27 @@ class Member extends Common
     public function info(){
 
         if($this->request->isGet()){
+            $id   = session('member.id');
+            $info = Db::name($this->member)->where('id',$id)->find();
+            $this->assign('info',$info);
             return $this->fetch();
         }
 
         if($this->request->isPost()){
-              return true;
+             $mid      = input('post.mid','','int');
+             $data['imgs']   = input('post.imgs','','trim');
+             $data['wechat'] = input('post.wechat','','trim');
+             $data['users']  = input('post.users','','trim');
+             $data['wx']     = input('post.wx','','trim');
+             $data['ali'] = input('post.ali','','trim');
+
+             $ret = Db::name($this->member)->where('id',$mid)->update($data);
+
+             if($ret){
+                 return json(['code'=>200,'msg'=>'提交成功']);
+             }else{
+                 return json(['code'=>200,'msg'=>'提交失败']);
+             }
         }
 
     }
