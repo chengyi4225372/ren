@@ -82,17 +82,17 @@
     <div class="row clearfix bgimg">
         <div class="center-common u-avatar-reg">
             <a href="{:url('member/info')}">
-            <img src="/static/index/images/blank.jpg" style="width:90px;height:90px;" alt="头像" class=" u-avatar">
+            <img src="{$info.imgs|default='/static/index/images/pic_fill.png'}" style="width:90px;height:90px;" alt="头像" class=" u-avatar">
             </a>
-            <p>ID:{Think.session.member.id}</p>
+            <p>ID:{$info.id}</p>
             <p style="color:green">好友2个 </p>
 
         </div>
         <div class="center-common u-profile-reg">
-            <p>会员编号:{$Think.session.member.id} [上级ID:2060]</p>
-            <p>手机号码:{$Think.session.member.users|default=''} </p>
-            <p>微信账号:gxt6988</p>
-            <p>会员等级:{$Think.session.member.level|default=''}星</p>
+            <p>会员编号:{$info.id} [上级ID:2060]</p>
+            <p>手机号码:{$info.users|default=''} </p>
+            <p>微信账号:{$info.wx|default=''}</p>
+            <p>会员等级:{$info.level|default=''}星</p>
 
             <p style="height:60px;margin-top:-15px;">
                 <a href="{:url('member/info')}"

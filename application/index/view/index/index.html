@@ -13,77 +13,6 @@
     <script type="text/javascript" src="/static/index/js/jquery.min.js"></script>
     <script type="text/javascript" src="/static/index/js/alert.js"></script>
 
-    <script type="text/javascript">
-        var setleve = "./index.php?i=1&c=entry&op=uplevel&do=index&m=jiexi_aaa";
-        var apply_uid = "2061";
-        var record_id = "";
-
-
-        $(function(){
-            $("#click-pay").click(function(){
-
-                if(!confirm('是否提交升级申请? \n点确定后按提示加Ta为好友,让他帮您升级! \n祝您玩的开心^_^')){
-                    return;
-                }
-
-                $.post('./index.php?i=1&c=entry&op=uplevel&do=index&m=jiexi_aaa', {'xxx' : 88},function(data){
-                    var info = eval(data);
-
-                    if(info.s == 'ok'){
-                        //alert(info.msg);
-                        window.location.reload(1);
-                        //window.location.href=window.location.href + '&rand=' + Math.floor(num);
-                    }else{
-                        //alert(info.msg);
-                        window.location.reload(1);
-                        //window.location.href=window.location.href + '&rand=' + Math.floor(num);
-
-                    }
-                },'json');
-            });
-
-
-            $("#refresh_click").click(function(){
-                if(!confirm('刷新超时未处理的升级请求?')){
-                    return;
-                }
-                $.post('./index.php?i=1&c=entry&op=refresh&do=index&m=jiexi_aaa', {'xxx' : 88},function(data){
-                    var info = eval(data);
-                    alert(data);
-                    if(info.s == 'ok'){
-
-
-                        alert(info.msg);
-                        //window.location.reload();
-                    }else{
-                        alert(info.msg);
-                        //window.location.reload();
-                    }
-                },'json');
-            });
-
-            $("#up_click").click(function(){
-                /*			if(!confirm('确认完成升级?')){
-                                return;
-                            }
-                */
-                $.post('./index.php?i=1&c=entry&op=upseturlok&do=index&m=jiexi_aaa', {'apply_uid' : apply_uid,'record_id': record_id},function(data){
-                    var info = eval(data);
-
-                    if(info.s == 'ok'){
-
-
-                        alert(info.msg);
-                        window.location.reload(1);
-                    }else{
-                        alert(info.msg);
-                        window.location.reload(1);
-                    }
-                },'json');
-            });
-
-        })
-    </script>
 </head>
 <body style="background: #dfdfdf	url(/static/index/images/pag.jpg)  repeat center;">
 <div class="container-fluid">
@@ -161,15 +90,16 @@
         <div class="thumbnail hdiv-common" style="margin-right:0px;margin-left:0px;text-align:center;background: repeat;background-size: 200%, 100%;">
 
             <div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
-                <span style=" font-weight:bold; "><a href="#">↓加我微信 发红包升级!</a> </span>
+                <span style=" font-weight:bold; "><a onclick="window.location.reload()">↓加我微信 发红包升级!</a> </span>
             </div>
             <!-- 					<div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
                 <span style=" font-weight:bold; "><a href="#">↓加我微信 发红包升级!</a> </span>
             </div>			 -->
             <div style="margin-top:30px;">
-                <center> <img class="img-circle" src="/static/index/images/201906062228093989.jpg" alt="头像"   style="width:118px;height:118px">  <br/> 	</center>
+                <center>
+                <img class="img-circle" src="{$info.imgs|default='/static/index/images/pic_fill.png'}" alt="头像"   style="width:118px;height:118px">  <br/> 	</center>
 
-                <img src="/static/index/images/201906062228091280.jpg" alt="二维码" class=" " style="width:158px;min-height:158px;">
+                <img src="{$info.wechat|default='/static/index/images/pic_fill.png'}" alt="二维码" class=" " style="width:158px;min-height:158px;">
 
             </div>
             <table class="table_contact" border="0" cellspacing="0" cellpadding="0">
@@ -180,17 +110,30 @@
                 </tr>
 
                 <tr>
-                    <td class="left"> <img style="vertical-align:middle" src="/static/index/images/weixin.png" width="24" height="24" alt=""   /></td>
-                    <td class="right"><span>LX491494265</span></td>
+                    <td class="left">
+                        <img style="vertical-align:middle" src="/static/index/images/weixin.png" width="24" height="24" alt=""   />
+                    </td>
+                    <td class="right"><span>{$info.wx|default=''}</span></td>
                 </tr>
+
                 <tr>
-                    <td class="left"><img style="vertical-align:middle" src="/static/index/images/phone.png" width="24" height="24" alt=""   /></td>
-                    <td class="right"><a style="color:#111" href="tel:15318778939">15318778939</a></td>
+                    <td class="left">
+                        <img style="vertical-align:middle" src="/static/index/images/ali.png" width="24" height="24" alt=""   />
+                    </td>
+                    <td class="right"><a style="color:#111" href="tel:{$info.users}">{$info.users}</a></td>
                 </tr>
+
+                <tr>
+                    <td class="left">
+                        <img style="vertical-align:middle" src="/static/index/images/phone.png" width="24" height="24" alt=""   />
+                    </td>
+                    <td class="right"><a style="color:#111" href="{$info.ali}">{$info.ali|default=''}</a></td>
+                </tr>
+
             </table>
 
             <div class="weui_btn weui_btn_primary" style="  width:88%;margin:20px auto 0 auto;">
-                <span style=" font-weight:bold; "><a href="#">↑加我微信 发红包升级!</a> </span>
+                <span style=" font-weight:bold; "><a onclick="window.location.reload()">↑加我微信 发红包升级!</a> </span>
             </div>
         </div>
     </div>
@@ -221,5 +164,10 @@
 <footer class="footer">
     <p>&nbsp;</p>
 </footer>
-<script>;</script>
+<script>
+
+
+
+</script>
+</body>
 </html>

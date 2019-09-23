@@ -22,7 +22,7 @@
             <p id="err_msg"></p>
             <li><i class="un">
                 <img src="/static/index/images/user_name.png">
-            </i><input class="username"  id='orderNo' type="text" placeholder="请输入推荐人编号 选填"/></li>
+            </i><input class="username"  id='orderNo' type="text" value="{$Think.get.order}"  placeholder="请输入推荐人编号 选填"/></li>
             <li><i class="yz">
               <img src="/static/index/images/user_name.png">
             </i>
@@ -38,7 +38,11 @@
         </ul>
         <div class="reg_btn">
             <button class="submit reg" type="button">注册</button>
-            <a href="{:url('login/login')}"><div class="reg-login"><p>已有帐号，立即登陆</p></div></a>
+            <a href="{:url('login/login')}">
+                <div class="reg-login">
+                    <p>已有帐号，立即登陆</p>
+                </div>
+            </a>
         </div>
     </form>
 

@@ -15,7 +15,14 @@ class Member extends Common
 
     //个人中心
     public function index(){
-        return $this->fetch();
+
+        if($this->request->isGet()){
+            $id   = session('member.id');
+            $info = Db::name($this->member)->where('id',$id)->find();
+            $this->assign('info',$info);
+            return $this->fetch();
+        }
+
     }
 
     //下级页面

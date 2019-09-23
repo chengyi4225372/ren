@@ -14,6 +14,9 @@ use app\index\controller\Common;
 
      //首页
      public function index(){
+         $id   = session('member.id');
+         $info = Db::name($this->member)->where('id',$id)->find();
+         $this->assign('info',$info);
          return $this->fetch();
      }
 
@@ -22,6 +25,7 @@ use app\index\controller\Common;
      {
          return $this->fetch();
      }
+
 
      //互动
      public function tui()

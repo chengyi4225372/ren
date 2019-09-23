@@ -27,7 +27,7 @@ class Login extends Controller
             $user = input('post.user');
             $pwd  = input('post.pwd');
 
-            $res  = Db::name($this->member)->where('users',$user)->find();
+            $res  = Db::name($this->member)->field('id,users,orderNo,level,status')->where('users',$user)->find();
 
             if(empty($res)){
                 return json(['code'=>401,'msg'=>'账号不存在']);

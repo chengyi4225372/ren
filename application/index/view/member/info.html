@@ -105,7 +105,7 @@
 
                     <div style="margin-top:15px; ">
                         <label class=""><span class="star">*</span>手机号码</label>
-                        <input type="text" id="users" name="users" value="{$info.users}"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;">
+                        <input type="text" id="users" name="users" value="{$info.users}"  disabled="" class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;">
                     </div>
 
                     <div style="margin-top:15px;">
@@ -132,7 +132,7 @@
         <p>&nbsp;</p>
     </footer>
     <script>
-     $(function(){
+   $(function(){
          $('#imgs').click(function(){
              $('#file').click();
          });
@@ -194,8 +194,6 @@
        })
    }
 
-
-
   //提交
     $('#safe').click(function(){
           var data = {};
@@ -204,7 +202,6 @@
           data.wx     = $('#wx').val();
           data.ali    = $('#ali').val();
           data.mid    = $('#mid').val();
-          data.users  = $('#users').val();
 
 
 
