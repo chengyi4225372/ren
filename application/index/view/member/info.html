@@ -14,6 +14,9 @@
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="/static/index/js/jquery.min.js"></script>
+    <script src="/static/index/js/main.js"></script>
+
+
     <style type="text/css">
         .star{color:red}
     </style>
@@ -73,7 +76,7 @@
     <form  enctype="multipart/form-data"  action="" method="post">
         <div class="row clearfix">
             <div class="col-xs-12">
-                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(../addons/jiexi_aaa/template/mobile/image/pag.jpg) no-repeat;background-size: 200%, 100%;">
+                <div class="thumbnail hdiv-common" style="margin-right:-15px;margin-left:-15px;height:890px;text-align:center;background: url(/static/index/images/pag.jpg) no-repeat;background-size: 200%, 100%;">
 
                     <div  class="btn bold-common" style="background:#00D13D;width:80%;color:#FFFFFF;height:55;font-size:16px;"id="click-safe">完善资料 收获更多红包</div>
                     <div style="margin-top:10px;">
@@ -87,7 +90,7 @@
 
 
                     <div style="margin-top:10px;">
-                        <img src="/attachment/upload/201906300017124100.jpg" width="100" height="100" alt="" />
+                        <img src="" width="100" height="100" alt="" />
                         <br/>
                         <label class=""><span class="star">*</span>上传微信二维码,方便好友给您发红包</label>
 
@@ -96,9 +99,9 @@
                     </div>
                     <div style="margin-top:15px; ">
                         <label class=""><span class="star">*</span>手机号码</label>
-                        <input type="text" id="mobile" name="mobile" value="17353993431"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;"></div>
+                        <input type="text" id="mobile" name="mobile" value=""  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;"></div>
 
-                    <input type="hidden" id="mobile2" name="mobile2" value="17353993431"  class="formdd-control" placeholder="请输入手机号" style="width:80%;margin:0 auto;">
+                    <input type="hidden" id="mobile2" name="mobile2" value=""  class="formdd-control">
 
 
                     <div style="margin-top:15px;">
@@ -117,17 +120,8 @@
         <p>&nbsp;</p>
     </footer>
     <script>
-        function save() {
-            mydata = {
-                'wechat' : $('#wechat').val(),
-                'qq' : $('#qq').val(),
-                'mobile' : $('#mobile').val()
-            };
-            $.post('./index.php?i=1&c=entry&op=edit&do=index&m=jiexi_aaa', mydata, function(data){
-                var info = eval(data);
-                alert(info.msg);
-            },'json');
-        }
+
+
     </script>
 </html>
 
