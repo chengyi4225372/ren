@@ -47,7 +47,8 @@ use app\index\controller\Common;
 
          $message = Db::name($this->message)->where('hid',$id)->order('create_at desc')->limit(40)->select();
 
-         $member  =  Db::name($this->member)->field('id,users')->order('id desc')->select();
+         $member  = Db::name($this->member)->field('id,users')->order('id desc')->select();
+
          $names   = array_column($member,'users','id');
 
          $this->assign('info',$info);
@@ -59,13 +60,17 @@ use app\index\controller\Common;
      //评论 提交
      public function tmessage(){
 
-        if($this->request->isPost){
             $data['hid']       = input('post.hid','','int');
+            $data['mid']       = input('post.mid','','int');
             $data['content']   = input('post.content','','trim');
 
             if(empty($data['hid']) || $data['hid'] <= 0){
-                return false;
+                return json(['code'=>403,'msg'=>'数据丢失，提交数据不合法']);
             }
+
+          if(empty($data['mid']) || $data['mid'] <= 0){
+              return json(['code'=>403,'msg'=>'数据丢失，提交数据不合法']);
+           }
 
             $ret = Db::name($this->message)->insertGetId($data);
 
@@ -74,14 +79,7 @@ use app\index\controller\Common;
             }else{
                 return json(['code'=>200,'msg'=>'网络原因，请稍后再评论']);
             }
-        }else{
-            return  false;
-        }
-
 
      }
-
-
-
 
 }

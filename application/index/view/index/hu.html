@@ -27,8 +27,8 @@
         <h3>评论列表：</h3>
         {volist name='message' id='vo'}
         <div class="tr clearfix">
-            <div class="td ">{:substr_replace($names[$vo.hid])}</div>
-            <div class="td">{$vo.content}</div>
+            <div class="td ">评论人：{:substr_replace($names[$vo['mid']],'****','3','4')}</div>
+            <div class="td">内容：{$vo.content}</div>
         </div>
 
         {/volist}
@@ -40,6 +40,7 @@
 
         </div>
 
+        <input type="hidden" id="mid" value="{$Think.session.member.id}">
         <input type="hidden" id="hid" value="{$info.id}">
 
     </div>
@@ -54,6 +55,7 @@
     $('.mess').click(function(){
        var data     = {};
        data.hid      =  $('#hid').val();
+       data.mid      =  $('#mid').val();
        data.content  =  $('#content').val();
 
        if(data.content == '' || data.content == undefined){
