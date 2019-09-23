@@ -55,7 +55,6 @@ class Member extends Common
              $mid      = input('post.mid','','int');
              $data['imgs']   = input('post.imgs','','trim');
              $data['wechat'] = input('post.wechat','','trim');
-             $data['users']  = input('post.users','','trim');
              $data['wx']     = input('post.wx','','trim');
              $data['ali'] = input('post.ali','','trim');
 

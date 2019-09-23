@@ -85,7 +85,7 @@
                     <div style="margin-top:10px;">
                         <img id="imgs" src="{$info.imgs|default='/static/index/images/pic_fill.png'}" width="100" height="100" alt="" />
                         <input type="file" id="file" class="uploadfile" onchange="showImgs();">
-                        <input type="hidden" id="Imgs1" value="">
+                        <input type="hidden" id="Imgs1" value="{$info.imgs}">
 
                         <br/>
                         <label class="">上传您的头像,方便好友识别您</label>
@@ -96,7 +96,7 @@
                     <div style="margin-top:10px;">
                         <img  id='wechat' src="{$info.wechat|default='/static/index/images/pic_fill.png'}" width="100" height="100" alt="" />
                         <input type="file" id="file1" class="uploadfile" onchange="showWechat();">
-                        <input type="hidden" id="Imgs2" value="">
+                        <input type="hidden" id="Imgs2" value="{$info.wechat}">
 
                         <br/>
 
@@ -202,8 +202,6 @@
           data.wx     = $('#wx').val();
           data.ali    = $('#ali').val();
           data.mid    = $('#mid').val();
-
-
 
           var url = "{:url('member/info')}";
 
